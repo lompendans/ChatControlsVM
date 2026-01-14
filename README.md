@@ -1,3 +1,7 @@
+*shhh.. let's not leak our hard work.*
+
+
+
 Welcome to the source code for @lompendans's "Chat Controls" stream! Please credit me when using the code, but if you don't thats fine lol.
 # INSTRUCTIONS
 
