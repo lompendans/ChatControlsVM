@@ -3,9 +3,6 @@ Welcome to the source code for @lompendans's "Chat Controls" stream! Please cred
 
 **1**: Download **main.py**.
 
-![alt text](image.png)
-![alt text](image-1.png)
-
 **2:** Install python.(https://www.python.org/ftp/python/3.14.2/python-3.14.2-amd64.exe)
 
 Make sure to **add python to path**.
