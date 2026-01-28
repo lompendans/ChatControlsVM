@@ -5,7 +5,7 @@
 Welcome to the source code for @lompendans's "Chat Controls" stream! Please credit me when using the code, but if you don't thats fine lol.
 # INSTRUCTIONS
 
-**1**: Download **main.py**.
+**1**: Download **main.py**. (By downloading the code, you accept the terms.)
 
 **2:** Install python.(https://www.python.org/ftp/python/3.14.2/python-3.14.2-amd64.exe)
 
