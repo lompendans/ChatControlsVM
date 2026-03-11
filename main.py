@@ -1,22 +1,19 @@
 # please credit! made by @lompendans on youtube
+# commented by an idiot, for idiots so they can understand a bit of the code
 
 import time
 import subprocess
 from datetime import datetime, timezone
 import pytchat
 
-# -----------------------------
-# CONFIG SECTION
-# -----------------------------
+
 VIDEO_ID = "STREAM_ID"  # remember to change this section at every stream! (USE THE PART AFTER watch?v=)
 VBOX = r"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
 VM_NAME = "vmname" # CHANGE THIS TO YOUR VM NMAE IN VIRTUALBOX
 POLL_DELAY = 1
 WATCHDOG = True
 
-# -----------------------------
 # SAFETY STUFF - these are the commands that get blocked in chat (feel free to modify)
-# -----------------------------
 BLOCKED_WORDS = {
     "shutdown",
     "shutdown /s",
@@ -36,9 +33,7 @@ def contains_blocked(text):
             return True
     return False
 
-# -----------------------------
 # VM STATE CHECKING
-# -----------------------------
 RESTORING_VM = False  # flag to prevent command spam during restore
 
 def vm_is_running():
@@ -66,9 +61,7 @@ def start_vm():
         stderr=subprocess.DEVNULL
     )
 
-# -----------------------------
 # SCANCODE SENDER - the core functionality
-# -----------------------------
 def send_scancode(press, release):
     # Send the press codes first
     subprocess.run(
@@ -84,9 +77,8 @@ def send_scancode(press, release):
         stderr=subprocess.DEVNULL
     )
 
-# -----------------------------
+
 # SCANCODES - took forever to map all these out
-# -----------------------------
 SCANCODES = {
     # Letters (lowercase)
     "a": (["1e"], ["9e"]), 
@@ -204,9 +196,7 @@ def press_key(key):
         press_codes, release_codes = SCANCODES[k]
         send_scancode(press_codes, release_codes)
 
-# -----------------------------
 # KEY COMBINATION HANDLER
-# -----------------------------
 def combo(keys):
     # For handling stuff like ctrl+alt+del
     presses = []
@@ -223,9 +213,7 @@ def combo(keys):
     if presses:
         send_scancode(presses, releases)
 
-# -----------------------------
 # TEXT TYPING
-# -----------------------------
 def type_text(text):
     # using VBox's built-in text typing - easier than scancodes for strings
     subprocess.run(
@@ -239,9 +227,7 @@ def send_text(text):
     type_text(text)
     press_key("enter")
 
-# -----------------------------
 # VM CONTROL FUNCTIONS
-# -----------------------------
 def restart_vm():
     print("Restarting VM...", flush=True)
     subprocess.run(
@@ -281,9 +267,9 @@ def restore_snapshot():
     RESTORING_VM = False
     print("VM restored", flush=True)
 
-# -----------------------------
 # COMMAND CHAINING - my streams chat really needs this feature or else they crash out
-# -----------------------------
+
+# ok lompendans here from like 2 months after making this, my streams chat destroyed my channel
 def split_commands(message):
     # Split message into individual commands
     commands = []
@@ -327,10 +313,8 @@ def execute_command(cmd):
         text = cmd.split(" ", 1)[1]
         send_text(text)
 
-# -----------------------------
 # MAIN LOOP
-# -----------------------------
-print("Code is running. Connected to stream {VIDEO_ID})", flush=True)
+print("Code is running. Connected to stream {VIDEO_ID})", flush=True) # you CAN understand this. You WILL understand this
 
 # Initialize chat connection
 chat = pytchat.create(video_id=VIDEO_ID)
@@ -382,5 +366,6 @@ while chat.is_alive():
         commands = split_commands(msg)
         for command in commands:
             execute_command(command)
+
 
     time.sleep(POLL_DELAY)
