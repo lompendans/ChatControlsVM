@@ -1,3 +1,8 @@
+# THIS REPO HAS BEEN ARCHIVED AS THERE ARE NOW MANY BETTER SCRIPTS. (etc. https://github.com/reallyiron/YT2VM). PLESAE DON'T USE THIS SH*TTY CODE AND GO USE SOME OTHER ONE
+
+
+
+
 *shhh... let's not leak our hard work.*
 
 
